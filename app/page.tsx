@@ -33,7 +33,7 @@ export default function Home() {
         </div>
 
         {/* Hero / About combined */}
-        <section className="relative px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 lg:pt-28 pb-28 sm:pb-32 min-h-dvh lg:min-h-screen flex items-start lg:items-center">
+        <section className="relative px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 lg:pt-28 pb-8 sm:pb-32 min-h-dvh lg:min-h-screen flex items-start lg:items-center">
           <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[auto_1fr] gap-8 sm:gap-12 lg:gap-20 items-center">
             {/* Profile status card */}
             <div className="relative justify-self-center lg:justify-self-end w-full max-w-[20rem] sm:max-w-sm">
@@ -151,7 +151,7 @@ export default function Home() {
         </section>
 
         {/* Tagline footer */}
-        <p className="absolute bottom-24 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 text-center text-[11px] md:text-sm text-muted-foreground/70 font-mono tracking-wide sm:bottom-28 sm:w-auto sm:whitespace-nowrap sm:tracking-wider">
+        <p className="relative mx-auto mb-24 w-[calc(100%-2rem)] text-center text-[11px] text-muted-foreground/70 font-mono tracking-wide md:absolute md:bottom-28 md:left-1/2 md:mb-0 md:w-auto md:-translate-x-1/2 md:whitespace-nowrap md:text-sm md:tracking-wider">
           Building the future, one commit at a time
         </p>
       </main>
