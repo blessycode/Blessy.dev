@@ -1,0 +1,17 @@
+node_modules
+# dependencies
+node_modules/
+
+# next
+.next/
+out/
+
+# pnpm
+.pnpm-store/
+
+# env
+.env
+.env.local
+
+# logs
+*.log
