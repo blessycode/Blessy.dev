@@ -53,15 +53,15 @@ export function Navigation() {
   const pathname = usePathname()
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-      <nav className="flex items-center gap-1 px-3 py-2 bg-card/85 backdrop-blur-2xl border border-border/80 rounded-full shadow-soft-lg">
+    <div className="fixed bottom-3 left-1/2 z-50 w-[calc(100%-1rem)] max-w-md -translate-x-1/2 sm:bottom-6 sm:w-auto sm:max-w-none">
+      <nav className="flex items-center justify-between gap-1 overflow-x-auto rounded-full border border-border/80 bg-card/85 px-2 py-2 shadow-soft-lg backdrop-blur-2xl sm:justify-center sm:overflow-visible sm:px-3">
         {navLinks.map(({ href, label, icon: Icon }) => {
           const isActive = pathname === href
           return (
             <Link
               key={href}
               href={href}
-              className={`group relative flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-full transition-all ${
+              className={`group relative flex min-w-10 flex-col items-center gap-0.5 rounded-full px-2 py-1.5 transition-all sm:px-3 ${
                 isActive
                   ? "bg-primary/15 text-primary"
                   : "text-muted-foreground hover:text-foreground"
@@ -69,14 +69,14 @@ export function Navigation() {
               aria-label={label}
             >
               <Icon className="w-4 h-4" strokeWidth={2.25} />
-              <span className="text-[10px] font-medium leading-none tracking-wide">
+              <span className="hidden text-[10px] font-medium leading-none tracking-wide min-[420px]:block">
                 {label}
               </span>
             </Link>
           )
         })}
 
-        <div className="w-px h-8 bg-border mx-1" />
+        <div className="mx-0.5 h-8 w-px shrink-0 bg-border sm:mx-1" />
 
         {socialLinks.map(({ href, label, icon: Icon }) => (
           <a
@@ -84,7 +84,7 @@ export function Navigation() {
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="p-2.5 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+            className="rounded-full p-2 text-muted-foreground transition-all hover:bg-primary/10 hover:text-primary sm:p-2.5"
             aria-label={label}
             title={label}
           >

@@ -33,12 +33,12 @@ export default function Home() {
         </div>
 
         {/* Hero / About combined */}
-        <section className="relative px-6 lg:px-12 pt-24 lg:pt-28 pb-32 min-h-screen flex items-center">
-          <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-center">
+        <section className="relative px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 lg:pt-28 pb-28 sm:pb-32 min-h-dvh lg:min-h-screen flex items-start lg:items-center">
+          <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[auto_1fr] gap-8 sm:gap-12 lg:gap-20 items-center">
             {/* Profile status card */}
-            <div className="relative justify-self-center lg:justify-self-end w-full max-w-sm">
+            <div className="relative justify-self-center lg:justify-self-end w-full max-w-[20rem] sm:max-w-sm">
               <div className="relative overflow-hidden rounded-lg border border-primary/20 bg-card/70 shadow-soft-lg backdrop-blur">
-                <div className="relative flex min-h-60 items-center justify-center border-b border-border/70 bg-gradient-to-b from-primary/5 to-transparent">
+                <div className="relative flex min-h-48 sm:min-h-60 items-center justify-center border-b border-border/70 bg-gradient-to-b from-primary/5 to-transparent">
                   <div className="absolute inset-0 code-grid-bg opacity-30" />
                   <div className="absolute h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
                   <div className="profile-glow relative h-32 w-32 overflow-hidden rounded-full sm:h-36 sm:w-36">
@@ -68,7 +68,7 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-3 rounded-lg bg-background/40 p-4">
+                  <div className="grid grid-cols-1 gap-3 rounded-lg bg-background/40 p-4 min-[420px]:grid-cols-3">
                     <div>
                       <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
                         Focus
@@ -109,18 +109,18 @@ export default function Home() {
             </div>
 
             {/* Right side content */}
-            <div className="space-y-7 max-w-2xl">
+            <div className="space-y-6 sm:space-y-7 max-w-2xl text-center lg:text-left">
               {/* Role badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-primary/40 rounded-full bg-primary/5 text-primary text-sm font-mono">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-primary/40 rounded-full bg-primary/5 text-primary text-xs sm:text-sm font-mono">
                 Data Scientist &amp; ML Engineer
               </div>
 
               {/* Headline */}
               <div className="font-display font-bold leading-[1.05] text-balance">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl text-foreground">
+                <h1 className="text-[2.65rem] sm:text-5xl md:text-6xl lg:text-7xl text-foreground">
                   Talk is cheap.
                 </h1>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl gradient-cyan-magenta">
+                <h1 className="text-[2.65rem] sm:text-5xl md:text-6xl lg:text-7xl gradient-cyan-magenta">
                   Show me the code.
                 </h1>
               </div>
@@ -136,7 +136,7 @@ export default function Home() {
               </p>
 
               {/* Tech tags */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
                 {techTags.map((tag) => (
                   <span
                     key={tag}
@@ -151,7 +151,7 @@ export default function Home() {
         </section>
 
         {/* Tagline footer */}
-        <p className="absolute bottom-28 left-1/2 -translate-x-1/2 text-xs md:text-sm text-muted-foreground/70 font-mono tracking-wider whitespace-nowrap">
+        <p className="absolute bottom-24 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 text-center text-[11px] md:text-sm text-muted-foreground/70 font-mono tracking-wide sm:bottom-28 sm:w-auto sm:whitespace-nowrap sm:tracking-wider">
           Building the future, one commit at a time
         </p>
       </main>
