@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Navigation } from "@/components/navigation"
+import { Smartphone } from "lucide-react"
 
 const techTags = [
   "Python",
@@ -34,18 +35,75 @@ export default function Home() {
         {/* Hero / About combined */}
         <section className="relative px-6 lg:px-12 pt-24 lg:pt-28 pb-32 min-h-screen flex items-center">
           <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-center">
-            {/* Profile photo with glowing ring */}
-            <div className="relative justify-self-center lg:justify-self-end">
-              <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72">
-                <div className="absolute inset-0 rounded-full bg-primary/30 blur-3xl" />
-                <div className="profile-glow relative w-full h-full rounded-full overflow-hidden">
-                  <Image
-                    src="/profile.png"
-                    alt="Blessed Zhou"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
+            {/* Profile status card */}
+            <div className="relative justify-self-center lg:justify-self-end w-full max-w-sm">
+              <div className="relative overflow-hidden rounded-lg border border-primary/20 bg-card/70 shadow-soft-lg backdrop-blur">
+                <div className="relative flex min-h-60 items-center justify-center border-b border-border/70 bg-gradient-to-b from-primary/5 to-transparent">
+                  <div className="absolute inset-0 code-grid-bg opacity-30" />
+                  <div className="absolute h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
+                  <div className="profile-glow relative h-32 w-32 overflow-hidden rounded-full sm:h-36 sm:w-36">
+                    <Image
+                      src="/profile.png"
+                      alt="Blessed Zhou"
+                      fill
+                      sizes="144px"
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                </div>
+
+                <div className="relative space-y-5 p-5 sm:p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                        Currently working on
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-foreground">
+                        Kura Nhaka Mobile App
+                      </p>
+                    </div>
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary">
+                      <Smartphone className="h-4 w-4" />
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3 rounded-lg bg-background/40 p-4">
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                        Focus
+                      </p>
+                      <p className="mt-2 text-xs font-semibold leading-relaxed text-foreground sm:text-sm">
+                        Mobile Apps &amp; Chatbots
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                        Stack
+                      </p>
+                      <p className="mt-2 text-xs font-semibold leading-relaxed text-foreground sm:text-sm">
+                        Flutter / Python
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                        Region
+                      </p>
+                      <p className="mt-2 text-xs font-semibold leading-relaxed text-foreground sm:text-sm">
+                        International
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between border-t border-border/70 pt-4">
+                    <p className="text-xs text-muted-foreground">
+                      Available for remote contracts &amp; consulting
+                    </p>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                      Open
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
