@@ -30,6 +30,8 @@ type GitHubEvent = {
   created_at: string;
   payload?: {
     commits?: unknown[];
+    distinct_size?: number;
+    size?: number;
   };
 };
 
@@ -74,7 +76,11 @@ async function getGitHubCommitDays() {
       const day = dayMap.get(key);
 
       if (day) {
-        day.count += event.payload?.commits?.length ?? 0;
+        day.count +=
+          event.payload?.commits?.length ??
+          event.payload?.distinct_size ??
+          event.payload?.size ??
+          1;
       }
     }
   } catch {
