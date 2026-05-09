@@ -17,7 +17,7 @@ const experiences: ExperienceItem[] = [
   {
     company: "Freelance / Independent",
     role: "Data Scientist & ML Engineer",
-    period: "2024 — Present",
+    period: "2024 to Present",
     status: "current",
     summary:
       "Building production-grade ML systems across credit risk, NLP, and predictive analytics for clients across multiple sectors.",
@@ -30,8 +30,8 @@ const experiences: ExperienceItem[] = [
   },
   {
     company: "International Data Analytics Consultancy (IDAC)",
-    role: "Junior Data Analyst",
-    period: "2022 — 2023",
+    role: "Data Analyst Intern",
+    period: "2022 to 2023",
     status: "past",
     summary:
       "Developed machine learning models for credit risk assessment and built analytics solutions for financial clients.",
@@ -65,7 +65,7 @@ export default function ExperiencePage() {
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               A track record of building data and ML systems from concept to
-              deployment &mdash; across financial services, analytics, and
+              deployment across financial services, analytics, and
               real-world AI problems.
             </p>
           </div>

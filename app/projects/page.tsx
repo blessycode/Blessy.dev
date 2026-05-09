@@ -78,8 +78,8 @@ export default function ProjectsPage() {
                 <span className="gradient-cyan-magenta">code</span>
               </h1>
               <p className="text-sm text-muted-foreground mt-3 max-w-lg">
-                Web apps, mobile apps, and code &mdash; previewed live, mocked
-                up, or shown directly.
+                Web apps, mobile apps, and code previewed live, mocked up, or
+                shown directly.
               </p>
             </div>
             <a
@@ -131,7 +131,7 @@ export default function ProjectsPage() {
                     <div className="flex items-center gap-3 text-xs text-muted-foreground pl-4">
                       <span className="inline-flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
-                        {project.date?.split(" - ").pop() || ""}
+                        {project.date?.split(" to ").pop() || ""}
                       </span>
                       <span>&middot;</span>
                       <span>{kindLabel[kind]}</span>

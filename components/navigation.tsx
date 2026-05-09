@@ -9,10 +9,22 @@ import {
   Mail,
   Github,
   Linkedin,
-  Twitter,
   BookOpen,
 } from "lucide-react"
 import { GmailIcon } from "@/components/icons/gmail"
+
+function XIcon({ className }: { className?: string; strokeWidth?: number }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M13.72 10.62 20.42 3h-1.59l-5.81 6.62L8.37 3H3l7.03 10.02L3 21h1.59l6.15-7 4.91 7H21l-7.28-10.38Zm-2.18 2.48-.71-1L5.16 4.17h2.45l4.57 6.39.71 1 5.95 8.32h-2.45l-4.85-6.78Z" />
+    </svg>
+  )
+}
 
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
@@ -35,7 +47,7 @@ const socialLinks = [
   {
     href: "https://x.com/bless13210",
     label: "X (Twitter)",
-    icon: Twitter,
+    icon: XIcon,
   },
   {
     href: "mailto:zhoublessed16@gmail.com",
