@@ -23,6 +23,7 @@ const techTags = [
   "Airflow",
   "Power BI",
   "Azure",
+  "+ More",
 ];
 
 type GitHubEvent = {
