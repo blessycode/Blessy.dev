@@ -53,7 +53,7 @@ async function getGitHubCommitDays() {
 
   try {
     const response = await fetch(
-      "https://api.github.com/users/blessycode/events/public",
+      "https://api.github.com/users/blessycode/events/public?per_page=100",
       {
         headers: {
           Accept: "application/vnd.github+json",
