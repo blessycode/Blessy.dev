@@ -1,37 +1,49 @@
-export type ProjectKind = "web" | "mobile" | "code"
+export type ProjectKind = "web" | "mobile" | "code";
 
 export interface CodeSnippet {
-  language: string
-  filename: string
-  code: string
+  language: string;
+  filename: string;
+  code: string;
 }
 
 export interface Project {
-  title: string
-  description: string
-  tags: string[]
+  title: string;
+  description: string;
+  tags: string[];
   /** Explicit project kind. Falls back to "web" if omitted. */
-  kind?: ProjectKind
+  kind?: ProjectKind;
   /** Hero image (used as fallback or banner). */
-  image?: string
+  image?: string;
   /** Mobile app screenshots, shown inside a phone frame. */
-  screenshots?: string[]
+  screenshots?: string[];
   /** Code snippet for code-only projects (no live demo). */
-  codeSnippet?: CodeSnippet
+  codeSnippet?: CodeSnippet;
   /**
    * Whether the demoUrl can be embedded in an iframe. Some hosts
    * (Streamlit Cloud, Heroku, etc.) send X-Frame-Options: DENY which
    * blocks the embed. Default true; set to false to render a poster
    * fallback with a "Launch Demo" CTA instead.
    */
-  iframeAllowed?: boolean
-  accentColor?: string
-  date?: string
-  codeUrl?: string
-  demoUrl?: string
+  iframeAllowed?: boolean;
+  accentColor?: string;
+  date?: string;
+  codeUrl?: string;
+  demoUrl?: string;
 }
 
 export const allProjects: Project[] = [
+  {
+    title: "Watcher API Reliability Platform",
+    description:
+      "Built an open-source API reliability platform for monitoring uptime, latency, incidents, alerts, developer logs, SLA health, regional performance, and public status pages.",
+    tags: ["FastAPI", "Next.js", "PostgreSQL", "Redis"],
+    kind: "web",
+    image: "/project-images/watcher.png",
+    accentColor: "#4F8CFF",
+    date: "May 2026",
+    codeUrl: "https://github.com/blessycode/watcher",
+    demoUrl: "https://watcher-iota-green.vercel.app/",
+  },
   {
     title: "Customer Churn Predictor",
     description:
@@ -42,7 +54,7 @@ export const allProjects: Project[] = [
     accentColor: "#7c3aed",
     date: "Jan 2024 to March 2024",
     codeUrl: "https://github.com/blessycode/customer-churn/tree/main",
-    demoUrl: "https://customerchurntelcho.streamlit.app/",
+    demoUrl: "https://customerchurntelcho.streamlit.app",
   },
   {
     title: "Automated Data Cleaning",
@@ -116,4 +128,4 @@ def recommend(user_id: int, top_k: int = 10) -> list[int]:
 `,
     },
   },
-]
+];
