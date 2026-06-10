@@ -75,7 +75,7 @@ export default function ContactPage() {
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full blur-3xl bg-[var(--accent-coral-soft)]" />
         </div>
 
-        <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-24 lg:pt-28">
+        <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32">
           {/* Header */}
           <div className="mb-10 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 border border-border rounded-full text-xs font-mono text-muted-foreground">
@@ -92,9 +92,9 @@ export default function ContactPage() {
           </div>
 
           {/* Two-column layout */}
-          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6">
+          <div className="grid md:grid-cols-[1.1fr_1fr] lg:grid-cols-[1.2fr_1fr] gap-6 md:gap-8">
             {/* Contact form */}
-            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-border/70 shadow-soft-lg">
+            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-6 md:p-7 lg:p-8 border border-border/70 shadow-soft-lg">
               {isSubmitted ? (
                 <div className="text-center py-10 space-y-3">
                   <div className="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto shadow-soft">

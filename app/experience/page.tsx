@@ -54,13 +54,13 @@ export default function ExperiencePage() {
           <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 lg:px-12 pt-24 lg:pt-32">
+        <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12 pt-24 md:pt-28 lg:pt-32">
           {/* Header */}
           <div className="mb-16 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-border rounded-full text-xs font-mono text-muted-foreground">
               <span className="text-primary">//</span> EXPERIENCE
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
               Experience
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -83,7 +83,7 @@ export default function ExperiencePage() {
               {experiences.map((exp, index) => (
                 <article
                   key={index}
-                  className="group relative bg-card/40 backdrop-blur-sm border border-border rounded-2xl p-6 lg:p-8 hover:border-primary/40 transition-all"
+                  className="group relative bg-card/40 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-7 lg:p-8 hover:border-primary/40 transition-all"
                 >
                   {/* Status dot */}
                   <span
@@ -94,7 +94,7 @@ export default function ExperiencePage() {
                     }`}
                   />
 
-                  <div className="grid lg:grid-cols-[1fr_1.5fr] gap-6 lg:gap-10">
+                  <div className="grid md:grid-cols-[auto_1.2fr] lg:grid-cols-[1fr_1.5fr] gap-6 md:gap-8 lg:gap-10">
                     {/* Left side */}
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
@@ -160,7 +160,7 @@ export default function ExperiencePage() {
               {educationData.map((edu, index) => (
                 <article
                   key={index}
-                  className="group bg-card/40 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-primary/40 transition-all"
+                  className="group bg-card/40 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-7 lg:p-8 hover:border-primary/40 transition-all"
                 >
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <h3 className="text-base font-bold leading-tight group-hover:text-primary transition-colors">
@@ -211,7 +211,7 @@ export default function ExperiencePage() {
               {competitionsData.map((c, index) => (
                 <article
                   key={index}
-                  className="group bg-card/40 backdrop-blur-sm border border-border rounded-2xl p-6 lg:p-8 hover:border-primary/40 transition-all"
+                  className="group bg-card/40 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-7 lg:p-8 hover:border-primary/40 transition-all"
                 >
                   <div className="flex items-start justify-between gap-4 mb-2">
                     <div>

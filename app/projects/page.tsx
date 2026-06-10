@@ -66,7 +66,7 @@ export default function ProjectsPage() {
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full blur-3xl bg-[var(--accent-coral-soft)]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 lg:px-12 pt-24 lg:pt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pt-24 md:pt-26 lg:pt-28">
           {/* Header */}
           <div className="flex items-start justify-between gap-6 mb-10">
             <div>
@@ -94,7 +94,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Split view */}
-          <div className="grid lg:grid-cols-[minmax(0,360px)_1fr] gap-6">
+          <div className="grid md:grid-cols-[280px_1fr] lg:grid-cols-[minmax(0,360px)_1fr] gap-6">
             {/* Project list */}
             <div className="space-y-3 lg:max-h-[75vh] lg:overflow-y-auto lg:pr-2">
               {allProjects.map((project, index) => {

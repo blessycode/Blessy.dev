@@ -68,7 +68,7 @@ export const toolsList = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 px-4 bg-muted/30">
+    <section id="skills" className="py-20 md:py-24 lg:py-28 px-4 md:px-6 lg:px-8 bg-muted/30">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-balance">Skills & Technologies</h2>

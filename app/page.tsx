@@ -170,15 +170,15 @@ export default function Home() {
         </div>
 
         {/* Hero / About combined */}
-        <section className="relative flex h-full items-start px-4 pb-28 pt-16 sm:px-6 sm:pt-20 lg:items-center lg:px-12 lg:pt-24">
-          <div className="mx-auto grid w-full max-w-6xl items-center gap-5 sm:gap-7 lg:grid-cols-[auto_1fr] lg:gap-14">
+        <section className="relative flex h-full items-start px-4 pb-28 pt-16 sm:px-6 sm:pt-20 md:px-8 md:pt-24 lg:items-center lg:px-12 lg:pt-28">
+          <div className="mx-auto grid w-full max-w-6xl items-center gap-5 sm:gap-7 md:gap-10 md:grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr] lg:gap-14">
             {/* Profile status card */}
-            <div className="relative justify-self-center lg:justify-self-end w-full max-w-[20rem] sm:max-w-sm">
+            <div className="relative justify-self-center md:justify-self-end w-full max-w-[20rem] sm:max-w-sm md:max-w-xs lg:max-w-sm">
               <div className="relative overflow-hidden rounded-lg border border-primary/20 bg-card/70 shadow-soft-lg backdrop-blur">
                 <div className="relative flex min-h-48 sm:min-h-60 items-center justify-center border-b border-border/70 bg-gradient-to-b from-primary/5 to-transparent">
                   <div className="absolute inset-0 code-grid-bg opacity-30" />
                   <div className="absolute h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
-                  <div className="profile-glow relative h-32 w-32 overflow-hidden rounded-full sm:h-36 sm:w-36">
+                  <div className="profile-glow relative h-32 w-32 overflow-hidden rounded-full sm:h-36 sm:w-36 md:h-40 md:w-40">
                     <Image
                       src="/profile.png"
                       alt="Blessed Zhou"
@@ -246,7 +246,7 @@ export default function Home() {
             </div>
 
             {/* Right side content */}
-            <div className="max-w-2xl space-y-3 text-center sm:space-y-4 lg:text-left">
+            <div className="max-w-2xl space-y-3 text-center sm:space-y-4 md:space-y-5 lg:text-left">
               {/* Role badge */}
               <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-primary/40 bg-primary/5 px-3 py-1.5 font-mono text-xs text-primary sm:px-4 sm:text-sm">
                 Data Scientist | ML Engineer | Full-Stack Developer
@@ -254,17 +254,17 @@ export default function Home() {
 
               {/* Headline */}
               <div className="mx-auto max-w-xl font-display font-bold leading-[1.06] text-balance lg:mx-0">
-                <h1 className="text-[2.3rem] text-foreground sm:text-5xl md:text-[3.25rem]">
+                <h1 className="text-[2.3rem] text-foreground sm:text-4xl md:text-5xl lg:text-[3.25rem]">
                   <span className="block">Transforming data</span>
                   <span className="block">into scalable</span>
                 </h1>
-                <h1 className="text-[2.3rem] gradient-cyan-magenta sm:text-5xl md:text-[3.25rem]">
+                <h1 className="text-[2.3rem] gradient-cyan-magenta sm:text-4xl md:text-5xl lg:text-[3.25rem]">
                   digital solutions.
                 </h1>
               </div>
 
               {/* Short bio */}
-              <p className="mx-auto max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground text-pretty sm:text-[1.05rem] md:text-lg lg:mx-0">
+              <p className="mx-auto max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground text-pretty sm:text-[1.05rem] md:text-base lg:text-lg lg:mx-0">
                 Hi, I&apos;m{" "}
                 <span className="text-primary font-semibold">Blessed Zhou</span>
                 . I build intelligent products across analytics, machine
