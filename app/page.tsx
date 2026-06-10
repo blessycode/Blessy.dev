@@ -37,9 +37,9 @@ type GitHubEvent = {
 };
 
 async function getGitHubCommitDays() {
-  const days = Array.from({ length: 7 }, (_, index) => {
+  const days = Array.from({ length: 21 }, (_, index) => {
     const date = new Date();
-    date.setDate(date.getDate() - (6 - index));
+    date.setDate(date.getDate() - (20 - index));
 
     return {
       key: date.toISOString().slice(0, 10),
@@ -47,7 +47,6 @@ async function getGitHubCommitDays() {
         month: "short",
         day: "numeric",
       }),
-      dayName: date.toLocaleDateString("en", { weekday: "short" }),
       count: 0,
     };
   });
@@ -99,18 +98,18 @@ async function GitHubCommitActivity() {
   const commitLabel = totalCommits === 1 ? "commit" : "commits";
 
   return (
-    <div className="mx-auto w-full max-w-2xl rounded-lg border border-primary/20 bg-card/60 p-4 shadow-soft backdrop-blur lg:mx-0">
-      <div className="mb-4 flex items-center justify-between gap-4">
+    <div className="mx-auto w-full max-w-xl rounded-lg border border-primary/20 bg-card/60 p-3 shadow-soft backdrop-blur lg:mx-0">
+      <div className="mb-2.5 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-left">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
             <Github className="h-4 w-4" />
           </span>
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-              This week
+              GitHub activity
             </p>
             <p className="text-[0.95rem] font-semibold text-foreground">
-              {totalCommits} {commitLabel}
+              {totalCommits} recent public {commitLabel}
             </p>
           </div>
         </div>
@@ -124,29 +123,32 @@ async function GitHubCommitActivity() {
         </a>
       </div>
 
-      {/* Weekly bars */}
-      <div className="flex items-end justify-between gap-2 h-20">
+      <div
+        className="grid h-16 items-end gap-1.5 sm:h-20"
+        style={{
+          gridTemplateColumns: `repeat(${days.length}, minmax(0, 1fr))`,
+        }}
+        aria-label="Recent GitHub commits"
+      >
         {days.map((day) => {
-          const height = day.count === 0 ? 8 : 15 + (day.count / maxCommits) * 60;
+          const height =
+            day.count === 0 ? 10 : 18 + (day.count / maxCommits) * 70;
 
           return (
             <div
               key={day.key}
-              className="group relative flex flex-col items-center flex-1"
+              className="group relative flex h-full items-end justify-center"
             >
               <div
-                className={`w-full rounded-t transition-all hover:opacity-100 ${
+                className={`w-1.5 rounded-sm transition-all group-hover:opacity-100 sm:w-2 ${
                   day.count > 0
-                    ? "bg-gradient-to-t from-primary to-[var(--accent-coral)] opacity-85 hover:opacity-100"
-                    : "bg-muted opacity-40"
+                    ? "bg-gradient-to-t from-primary to-[var(--accent-coral)] opacity-90"
+                    : "bg-muted opacity-70"
                 }`}
                 style={{ height: `${height}%` }}
               />
-              <span className="text-[10px] font-medium text-muted-foreground mt-2">
-                {day.dayName}
-              </span>
-              <span className="pointer-events-none absolute -top-8 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-popover px-2 py-1 text-[11px] font-medium text-popover-foreground shadow-soft group-hover:block">
-                {day.count}
+              <span className="pointer-events-none absolute -top-8 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-popover px-2 py-1 text-[11px] text-popover-foreground shadow-soft group-hover:block">
+                {day.count} on {day.label}
               </span>
             </div>
           );
