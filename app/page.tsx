@@ -162,7 +162,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <main className="relative h-dvh min-h-dvh overflow-hidden bg-background">
+      <main className="relative min-h-screen overflow-x-hidden bg-background">
         {/* Subtle background glows */}
         <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
@@ -170,10 +170,10 @@ export default function Home() {
         </div>
 
         {/* Hero / About combined */}
-        <section className="relative flex h-full items-start px-4 pb-28 pt-16 sm:px-6 sm:pt-20 md:px-8 md:pt-24 lg:items-center lg:px-12 lg:pt-28">
-          <div className="mx-auto grid w-full max-w-6xl items-center gap-5 sm:gap-7 md:gap-10 md:grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr] lg:gap-14">
+        <section className="relative flex min-h-screen items-start px-4 pb-20 pt-16 sm:px-6 sm:pb-24 sm:pt-20 md:px-8 md:pb-28 md:pt-24 lg:items-center lg:px-12 lg:pb-32 lg:pt-28">
+          <div className="mx-auto grid w-full max-w-7xl items-center gap-5 sm:gap-7 md:gap-10 md:grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr] lg:gap-14">
             {/* Profile status card */}
-            <div className="relative justify-self-center md:justify-self-end w-full max-w-[20rem] sm:max-w-sm md:max-w-xs lg:max-w-sm">
+            <div className="relative justify-self-center md:justify-self-end w-full max-w-[20rem] sm:max-w-sm md:max-w-sm lg:max-w-sm">
               <div className="relative overflow-hidden rounded-lg border border-primary/20 bg-card/70 shadow-soft-lg backdrop-blur">
                 <div className="relative flex min-h-48 sm:min-h-60 items-center justify-center border-b border-border/70 bg-gradient-to-b from-primary/5 to-transparent">
                   <div className="absolute inset-0 code-grid-bg opacity-30" />
@@ -291,7 +291,7 @@ export default function Home() {
         </section>
 
         {/* Tagline footer */}
-        <p className="absolute bottom-24 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 text-center font-mono text-xs tracking-wide text-muted-foreground/70 md:w-auto md:whitespace-nowrap md:text-sm md:tracking-wider">
+        <p className="relative left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 text-center font-mono text-xs tracking-wide text-muted-foreground/70 md:w-auto md:whitespace-nowrap md:text-sm md:tracking-wider mt-8 sm:mt-10 md:mt-12 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
           Building useful systems from data, code, and careful engineering.
         </p>
       </main>
