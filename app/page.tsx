@@ -37,9 +37,9 @@ type GitHubEvent = {
 };
 
 async function getGitHubCommitDays() {
-  const days = Array.from({ length: 21 }, (_, index) => {
+  const days = Array.from({ length: 7 }, (_, index) => {
     const date = new Date();
-    date.setDate(date.getDate() - (20 - index));
+    date.setDate(date.getDate() - (6 - index));
 
     return {
       key: date.toISOString().slice(0, 10),
@@ -47,6 +47,7 @@ async function getGitHubCommitDays() {
         month: "short",
         day: "numeric",
       }),
+      dayName: date.toLocaleDateString("en", { weekday: "short" }),
       count: 0,
     };
   });
@@ -93,23 +94,23 @@ async function getGitHubCommitDays() {
 
 async function GitHubCommitActivity() {
   const days = await getGitHubCommitDays();
+  const maxCommits = Math.max(...days.map((day) => day.count), 1);
   const totalCommits = days.reduce((total, day) => total + day.count, 0);
   const commitLabel = totalCommits === 1 ? "commit" : "commits";
-  const activeDays = days.filter((day) => day.count > 0).length;
 
   return (
-    <div className="mx-auto w-full max-w-2xl rounded-lg border border-primary/20 bg-card/60 p-4 sm:p-6 shadow-soft backdrop-blur lg:mx-0">
-      <div className="mb-5 flex items-center justify-between gap-4">
+    <div className="mx-auto w-full max-w-2xl rounded-lg border border-primary/20 bg-card/60 p-4 shadow-soft backdrop-blur lg:mx-0">
+      <div className="mb-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-left">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
             <Github className="h-4 w-4" />
           </span>
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-              GitHub activity
+              This week
             </p>
             <p className="text-[0.95rem] font-semibold text-foreground">
-              {totalCommits} {commitLabel} • {activeDays} active {activeDays === 1 ? "day" : "days"}
+              {totalCommits} {commitLabel}
             </p>
           </div>
         </div>
@@ -123,41 +124,30 @@ async function GitHubCommitActivity() {
         </a>
       </div>
 
-      {/* Timeline view */}
-      <div className="space-y-2">
-        {days.map((day, index) => {
-          const isActive = day.count > 0;
-          const intensity = Math.min(day.count / 10, 1);
+      {/* Weekly bars */}
+      <div className="flex items-end justify-between gap-2 h-20">
+        {days.map((day) => {
+          const height = day.count === 0 ? 8 : 15 + (day.count / maxCommits) * 60;
 
           return (
             <div
               key={day.key}
-              className="group flex items-center gap-3 rounded-lg transition-colors hover:bg-muted/50 p-2"
+              className="group relative flex flex-col items-center flex-1"
             >
-              <span className="min-w-fit text-xs font-medium text-muted-foreground w-16">
-                {day.label}
-              </span>
-
-              {/* Progress bar */}
-              <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
-                {isActive && (
-                  <div
-                    className="h-full bg-gradient-to-r from-primary to-[var(--accent-coral)] rounded-full transition-all duration-300"
-                    style={{ width: `${intensity * 100}%` }}
-                  />
-                )}
-              </div>
-
-              {/* Commit count badge */}
               <div
-                className={`min-w-fit px-2.5 py-1 rounded-md text-xs font-semibold transition-colors ${
-                  isActive
-                    ? "bg-primary/20 text-primary"
-                    : "bg-muted/40 text-muted-foreground"
+                className={`w-full rounded-t transition-all hover:opacity-100 ${
+                  day.count > 0
+                    ? "bg-gradient-to-t from-primary to-[var(--accent-coral)] opacity-85 hover:opacity-100"
+                    : "bg-muted opacity-40"
                 }`}
-              >
+                style={{ height: `${height}%` }}
+              />
+              <span className="text-[10px] font-medium text-muted-foreground mt-2">
+                {day.dayName}
+              </span>
+              <span className="pointer-events-none absolute -top-8 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-popover px-2 py-1 text-[11px] font-medium text-popover-foreground shadow-soft group-hover:block">
                 {day.count}
-              </div>
+              </span>
             </div>
           );
         })}
