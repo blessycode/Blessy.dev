@@ -93,29 +93,12 @@ async function getGitHubCommitDays() {
 
 async function GitHubCommitActivity() {
   const days = await getGitHubCommitDays();
-  const maxCommits = Math.max(...days.map((day) => day.count), 1);
   const totalCommits = days.reduce((total, day) => total + day.count, 0);
   const commitLabel = totalCommits === 1 ? "commit" : "commits";
-
-  // Group days into weeks (7 days per week)
-  const weeks: typeof days[][] = [];
-  for (let i = 0; i < days.length; i += 7) {
-    weeks.push(days.slice(i, i + 7));
-  }
-
-  // Day labels
-  const dayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  const getColor = (count: number) => {
-    if (count === 0) return "bg-muted/40";
-    if (count === 1) return "bg-primary/30";
-    if (count <= 3) return "bg-primary/50";
-    if (count <= 5) return "bg-primary/70";
-    return "bg-gradient-to-br from-primary to-[var(--accent-coral)]";
-  };
+  const activeDays = days.filter((day) => day.count > 0).length;
 
   return (
-    <div className="mx-auto w-full max-w-2xl rounded-lg border border-primary/20 bg-card/60 p-4 sm:p-5 shadow-soft backdrop-blur lg:mx-0">
+    <div className="mx-auto w-full max-w-2xl rounded-lg border border-primary/20 bg-card/60 p-4 sm:p-6 shadow-soft backdrop-blur lg:mx-0">
       <div className="mb-5 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-left">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -126,7 +109,7 @@ async function GitHubCommitActivity() {
               GitHub activity
             </p>
             <p className="text-[0.95rem] font-semibold text-foreground">
-              {totalCommits} recent public {commitLabel}
+              {totalCommits} {commitLabel} • {activeDays} active {activeDays === 1 ? "day" : "days"}
             </p>
           </div>
         </div>
@@ -140,79 +123,44 @@ async function GitHubCommitActivity() {
         </a>
       </div>
 
-      {/* Contribution grid */}
-      <div className="overflow-x-auto">
-        <div className="flex gap-2">
-          {/* Day labels */}
-          <div className="flex flex-col gap-1">
-            <div className="h-5" />
-            {dayLabels.map((label, i) => (
-              <div
-                key={label}
-                className="flex h-3 w-5 items-center text-[10px] text-muted-foreground"
-              >
-                {i % 2 === 0 && label}
-              </div>
-            ))}
-          </div>
+      {/* Timeline view */}
+      <div className="space-y-2">
+        {days.map((day, index) => {
+          const isActive = day.count > 0;
+          const intensity = Math.min(day.count / 10, 1);
 
-          {/* Weeks grid */}
-          <div className="flex gap-1">
-            {weeks.map((week, weekIndex) => (
-              <div
-                key={weekIndex}
-                className="flex flex-col gap-1"
-                style={{
-                  minWidth: "fit-content",
-                }}
-              >
-                {/* Month label (only show for first week or when month changes) */}
-                <div className="h-5 text-[10px] text-muted-foreground flex items-end px-1">
-                  {weekIndex === 0 &&
-                    weeks[0]?.[0]?.label?.split(" ")[0]}
-                </div>
+          return (
+            <div
+              key={day.key}
+              className="group flex items-center gap-3 rounded-lg transition-colors hover:bg-muted/50 p-2"
+            >
+              <span className="min-w-fit text-xs font-medium text-muted-foreground w-16">
+                {day.label}
+              </span>
 
-                {/* Days in week */}
-                {week.map((day, dayIndex) => (
+              {/* Progress bar */}
+              <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
+                {isActive && (
                   <div
-                    key={day.key}
-                    className="group relative"
-                  >
-                    <div
-                      className={`h-3 w-3 rounded transition-all hover:ring-2 hover:ring-primary/50 hover:ring-offset-1 ${getColor(
-                        day.count,
-                      )}`}
-                    />
-                    <span className="pointer-events-none absolute left-1/2 top-full mt-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-popover px-2 py-1 text-[11px] text-popover-foreground shadow-soft group-hover:block z-50">
-                      {day.count} {day.count === 1 ? "commit" : "commits"}{" "}
-                      <br />
-                      on {day.label}
-                    </span>
-                  </div>
-                ))}
-
-                {/* Padding for incomplete weeks */}
-                {week.length < 7 &&
-                  Array.from({ length: 7 - week.length }).map((_, i) => (
-                    <div key={`empty-${i}`} className="h-3 w-3" />
-                  ))}
+                    className="h-full bg-gradient-to-r from-primary to-[var(--accent-coral)] rounded-full transition-all duration-300"
+                    style={{ width: `${intensity * 100}%` }}
+                  />
+                )}
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      {/* Legend */}
-      <div className="mt-4 flex items-center justify-end gap-3 text-[11px] text-muted-foreground">
-        <span>Less</span>
-        <div className="flex gap-1">
-          <div className="h-2 w-2 rounded bg-muted/40" />
-          <div className="h-2 w-2 rounded bg-primary/30" />
-          <div className="h-2 w-2 rounded bg-primary/50" />
-          <div className="h-2 w-2 rounded bg-primary/70" />
-          <div className="h-2 w-2 rounded bg-gradient-to-br from-primary to-[var(--accent-coral)]" />
-        </div>
-        <span>More</span>
+              {/* Commit count badge */}
+              <div
+                className={`min-w-fit px-2.5 py-1 rounded-md text-xs font-semibold transition-colors ${
+                  isActive
+                    ? "bg-primary/20 text-primary"
+                    : "bg-muted/40 text-muted-foreground"
+                }`}
+              >
+                {day.count}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
